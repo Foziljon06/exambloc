@@ -1,11 +1,9 @@
-
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class NewsService {
   final String apiKey = '5afcf8264abf4d82aea6c75c4ceb1090';
   final String baseUrl = 'https://newsapi.org/v2';
-
-  get http => null;
 
   Future<List<Article>> fetchTopHeadlines() async {
     final response = await http.get(
@@ -39,10 +37,11 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      title: json['title'] as String,
-      description: json['description'] as String,
-      url: json['url'] as String,
-      urlToImage: json['urlToImage'] as String,
+      title: json['title'],
+      description: json['description'],
+      url: json['url'],
+      urlToImage: json['urlToImage'],
     );
   }
 }
+

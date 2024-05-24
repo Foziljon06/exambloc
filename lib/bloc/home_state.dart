@@ -1,13 +1,31 @@
-abstract class SignInState {}
+import 'package:equatable/equatable.dart';
+import '../servives/http_service.dart';
 
-class SignInInitialState extends SignInState {}
+abstract class HomeState extends Equatable {
+  const HomeState();
 
-class SignInLoadingState extends SignInState {}
+  @override
+  List<Object> get props => [];
+}
 
-class GetNewsState extends SignInState {}
+class HomeInitialState extends HomeState {}
 
-class SignInFailureState extends SignInState {
-  final String errorMessage;
+class HomeLoadingState extends HomeState {}
 
-  SignInFailureState(this.errorMessage);
+class HomeLoadedNewsListState extends HomeState {
+  final List<Article> articles;
+
+  const HomeLoadedNewsListState(this.articles);
+
+  @override
+  List<Object> get props => [articles];
+}
+
+class HomeErrorState extends HomeState {
+  final String message;
+
+  const HomeErrorState(this.message);
+
+  @override
+  List<Object> get props => [message];
 }
