@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../models/model.dart';
 import '../servives/http_service.dart';
 
 abstract class HomeState extends Equatable {
